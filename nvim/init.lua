@@ -1,6 +1,7 @@
 -- Super basic NeoVim configuration.
 -- Author: LuxÆterna. Requirements: NeoVim 0.9.0+, patched fonts, and whatever Telescope likes to have available on the system.
 -- Enables: Lazy, TokyoNight theme, relative line numbers, indentation with four spaces. Also Lualine.
+-- Shortcuts: A few useful shortcuts gleaned from LunarVim.
 
 -- Options
 vim.opt.number = true
@@ -57,9 +58,12 @@ require("lualine").setup()
 -- Keymappings
 vim.g.mapleader = ' '
 local builtin = require('telescope.builtin')
-vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
-vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
-vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
-vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
-vim.keymap.set('n', '<leader>ft', builtin.current_buffer_fuzzy_find, {})
+vim.keymap.set('n', '<leader>ff', builtin.find_files, { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>fg', builtin.live_grep, { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>fb', builtin.buffers, { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>fh', builtin.help_tags, { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>ft', builtin.current_buffer_fuzzy_find, { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>c', ':bdelete<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>n', ':new<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>w', ':write<CR>', { noremap = true, silent = true })
 
