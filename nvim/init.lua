@@ -1,6 +1,6 @@
 -- Super basic NeoVim configuration.
 -- Author: LuxÆterna. Requirements: NeoVim 0.9.0+, patched fonts, and whatever Telescope likes to have available on the system.
--- Enables: Lazy, TokyoNight theme, relative line numbers, indentation with four spaces. Also Lualine.
+-- Enables: Lazy, TokyoNight theme, relative line numbers, indentation with four spaces. Also Lualine and Leap.
 -- Shortcuts: A few useful shortcuts gleaned from LunarVim.
 
 -- Options
@@ -36,15 +36,15 @@ local plugins = {
         lazy = false,
         priority = 1000,
         opts = {},
-    },
-    {
+    }, {
    	    'nvim-telescope/telescope.nvim', tag = '0.1.3',
  	    dependencies = { {'nvim-lua/plenary.nvim'} }
-    },{
+    }, {
         'nvim-lualine/lualine.nvim',
         dependencies = { 'kyazdani42/nvim-web-devicons', opt = true },
-     }
-
+    }, {
+         'ggandor/leap.nvim',
+    },
 }
 
 require("lazy").setup(plugins)
@@ -54,6 +54,9 @@ vim.cmd[[colorscheme tokyonight]]
 
 -- Enable lualine
 require("lualine").setup()
+
+-- Set up key bindings for Leap
+require("leap").add_default_mappings(true)
 
 -- Keymappings
 vim.g.mapleader = ' '
