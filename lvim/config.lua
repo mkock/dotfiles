@@ -14,10 +14,17 @@ vim.keymap.set("n", "<m-l>", "<cmd>BufferLineCycleNext<cr>", opts)
 
 lvim.plugins = {
     { "leoluz/nvim-dap-go" },
+    { "ggandor/leap.nvim" },
 }
+
+-- The "lunar" colorscheme is a bit too dark for my taste
+lvim.colorscheme = "tokyonight"
 
 -- Always enable git commit information on the current line
 lvim.builtin.gitsigns.opts.current_line_blame = true
+
+-- Configure leap
+require("leap").add_default_mappings(true)
 
 require("dap-go").setup {
     -- Additional dap configurations can be added.
