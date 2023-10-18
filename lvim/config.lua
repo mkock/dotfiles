@@ -19,6 +19,7 @@ lvim.plugins = {
 
 -- The "lunar" colorscheme is a bit too dark for my taste
 lvim.colorscheme = "tokyonight"
+lvim.builtin.lualine.options.theme = "tokyonight"
 
 -- Always enable git commit information on the current line
 lvim.builtin.gitsigns.opts.current_line_blame = true
@@ -63,3 +64,21 @@ require("dap-go").setup {
         build_flags = "",
     },
 }
+
+-- Add shortcut for LSP goto type definition, and a corresponding which-key mapping
+vim.keymap.set("n", "gy", vim.lsp.buf.type_definition, opts)
+
+local which_key = require "which-key"
+local mappings = {
+    g = {
+        y = { "<cmd>lua vim.lsp.buf.type_definition()<cr>", "Goto type definition" }
+    }
+}
+local wk_opts = {
+    mode = "n",     -- Normal mode
+    buffer = nil,   -- Global mappings. Specify a buffer number for buffer local mappings
+    silent = true,  -- use `silent` when creating keymaps
+    noremap = true, -- use `noremap` when creating keymaps
+    nowait = false, -- use `nowait` when creating keymaps
+}
+which_key.register(mappings, wk_opts)
