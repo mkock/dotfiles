@@ -12,6 +12,9 @@ local opts = { noremap = true, silent = true }
 vim.keymap.set("n", "<m-h>", "<cmd>BufferLineCyclePrev<cr>", opts)
 vim.keymap.set("n", "<m-l>", "<cmd>BufferLineCycleNext<cr>", opts)
 
+-- Nice shortcuts for marks
+vim.keymap.set("n", "<space>sm", "<cmd>Telescope marks<cr>", opts)
+
 lvim.plugins = {
     { "leoluz/nvim-dap-go" },
     { "ggandor/leap.nvim" },
