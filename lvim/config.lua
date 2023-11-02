@@ -2,10 +2,7 @@
 -- Video Tutorials: https://www.youtube.com/watch?v=sFA9kX-Ud_c&list=PLhoH5vyxr6QqGu0i7tt_XoVK9v-KvZ3m6
 -- Forum: https://www.reddit.com/r/lunarvim/
 -- Discord: https://discord.com/invite/Xb9B4Ny
-vim.o.relativenumber = true
-vim.o.tabstop = 4
-vim.o.shiftwidth = 4
-vim.o.shell = "/usr/bin/fish"
+vim.api.nvim_set_option("clipboard", "")
 
 -- Custom tab switching
 local opts = { noremap = true, silent = true }
@@ -18,11 +15,12 @@ vim.keymap.set("n", "<space>sm", "<cmd>Telescope marks<cr>", opts)
 lvim.plugins = {
     { "leoluz/nvim-dap-go" },
     { "ggandor/leap.nvim" },
+    { "catppuccin/nvim", name = "catppuccin", priority = 1000 }
 }
 
 -- The "lunar" colorscheme is a bit too dark for my taste
-lvim.colorscheme = "tokyonight"
-lvim.builtin.lualine.options.theme = "tokyonight"
+-- lvim.colorscheme = "tokyonight"
+lvim.colorscheme = "catppuccin-frappe"
 
 -- Always enable git commit information on the current line
 lvim.builtin.gitsigns.opts.current_line_blame = true
@@ -68,6 +66,22 @@ require("dap-go").setup {
     },
 }
 
+require("catppuccin").setup({
+    integrations = {
+        dashboard = true,
+        cmp = true,
+        gitsigns = true,
+        nvimtree = true,
+        treesitter = true,
+        notify = true,
+    }
+})
+
+-- Configure PHP (Intelephense)
+lvim.builtin.treesitter.ensure_installed = {
+	"php",
+}
+
 -- Add shortcut for LSP goto type definition, and a corresponding which-key mapping
 vim.keymap.set("n", "gy", vim.lsp.buf.type_definition, opts)
 
@@ -85,3 +99,10 @@ local wk_opts = {
     nowait = false, -- use `nowait` when creating keymaps
 }
 which_key.register(mappings, wk_opts)
+
+vim.o.relativenumber = true
+vim.o.tabstop = 4
+vim.o.shiftwidth = 4
+vim.o.shell = "/usr/bin/fish"
+
+
