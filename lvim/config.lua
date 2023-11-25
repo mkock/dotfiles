@@ -18,6 +18,7 @@ vim.keymap.set("n", "<space>sm", "<cmd>Telescope marks<cr>", opts)
 lvim.plugins = {
     { "leoluz/nvim-dap-go" },
     { "ggandor/leap.nvim" },
+    { "Exafunction/codeium.vim" }
 }
 
 -- The "lunar" colorscheme is a bit too dark for my taste
@@ -70,6 +71,9 @@ require("dap-go").setup {
 
 -- Add shortcut for LSP goto type definition, and a corresponding which-key mapping
 vim.keymap.set("n", "gy", vim.lsp.buf.type_definition, opts)
+
+-- As tab conflicts with cmp, let's also use C-a as a shortcut
+vim.keymap.set('i', '<C-a>', function() return vim.fn['codeium#Accept']() end, { expr = true, silent = true })
 
 local which_key = require "which-key"
 local mappings = {
