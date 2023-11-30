@@ -15,7 +15,16 @@ vim.keymap.set("n", "<space>sm", "<cmd>Telescope marks<cr>", opts)
 lvim.plugins = {
     { "leoluz/nvim-dap-go" },
     { "ggandor/leap.nvim" },
-    { "catppuccin/nvim", name = "catppuccin", priority = 1000 }
+    { "catppuccin/nvim",   name = "catppuccin", priority = 1000 },
+    {
+        "Exafunction/codeium.vim",
+        config = function()
+            vim.keymap.set('i', '<c-a>', function() return vim.fn['codeium#Accept']() end, { expr = true })
+            vim.keymap.set('i', '<c-.>', function() return vim.fn['codeium#CycleCompletions'](1) end, { expr = true })
+            vim.keymap.set('i', '<c-,>', function() return vim.fn['codeium#CycleCompletions'](-1) end, { expr = true })
+            vim.keymap.set('i', '<c-x>', function() return vim.fn['codeium#Clear']() end, { expr = true })
+        end
+    }
 }
 
 -- The "lunar" colorscheme is a bit too dark for my taste
@@ -24,6 +33,13 @@ lvim.colorscheme = "catppuccin-frappe"
 
 -- Always enable git commit information on the current line
 lvim.builtin.gitsigns.opts.current_line_blame = true
+
+-- Configure Telescope
+lvim.builtin.telescope.defaults = {
+    layout_config = {
+        center = { width = 0.75 }
+    }
+}
 
 -- Configure leap
 require("leap").add_default_mappings(true)
@@ -79,7 +95,7 @@ require("catppuccin").setup({
 
 -- Configure PHP (Intelephense)
 lvim.builtin.treesitter.ensure_installed = {
-	"php",
+    "php",
 }
 
 -- Add shortcut for LSP goto type definition, and a corresponding which-key mapping
@@ -104,5 +120,3 @@ vim.o.relativenumber = true
 vim.o.tabstop = 4
 vim.o.shiftwidth = 4
 vim.o.shell = "/usr/bin/fish"
-
-
