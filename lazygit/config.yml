@@ -1,0 +1,11 @@
+os:
+  edit: 'lvim {{filename}}'
+  editPreset: 'nvim-remote' # edit files from within parent nvim process
+  editInTerminal: true
+gui:
+  nerdFontsVersion: '3'
+  border: 'rounded'
+git:
+  log:
+    order: 'topo-order'
+    showGraph: 'always'
