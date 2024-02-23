@@ -15,7 +15,7 @@ vim.keymap.set("n", "<space>sm", "<cmd>Telescope marks<cr>", opts)
 lvim.plugins = {
     { "leoluz/nvim-dap-go" },
     { "ggandor/leap.nvim" },
-    { "catppuccin/nvim",   name = "catppuccin", priority = 1000 },
+    { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
     {
         "Exafunction/codeium.vim",
         config = function()
@@ -29,7 +29,7 @@ lvim.plugins = {
 
 -- The "lunar" colorscheme is a bit too dark for my taste
 -- lvim.colorscheme = "tokyonight"
-lvim.colorscheme = "catppuccin-frappe"
+lvim.colorscheme = "catppuccin-latte"
 
 -- Always enable git commit information on the current line
 lvim.builtin.gitsigns.opts.current_line_blame = true
