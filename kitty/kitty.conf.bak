@@ -1,8 +1,18 @@
-include ./theme.conf
-
-font_family Blex Mono Nerd Font Complete Mono
+# font_family Blex Mono Nerd Font Complete Mono
+# font_family Mononoki Nerd Font Mono
+# font_family FantasqueSansM Nerd Font Mono
+# font_family FiraCode
 font_size 12
 
-# Using a custom Python-powered setup
-tab_bar_style custom
+window_padding_width 1
+
+scrollback_lines 8000
+
+# BEGIN_KITTY_THEME
+include theme.conf
+include tab_bar.conf
+# END_KITTY_THEME
+
+hide_window_decorations yes
+background_opacity 0.90
 
